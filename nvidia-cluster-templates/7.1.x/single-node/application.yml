@@ -1,0 +1,21 @@
+# Copyright 2021 Cloudera, Inc
+#
+# All rights reserved.
+#
+# The source code for this program is proprietary to Cloudera, Inc and, absent a
+# written agreement with Cloudera, Inc. to the contrary, is not published.
+#
+# Cloudera, Inc. maintains this source code as its trade secrets, irrespective of what has been or may be deposited with the U.S. Copyright Office.
+#
+# Cloudera Confidential
+
+---
+- name: Coda
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  become: no
+  tasks:
+    - name: Deployment results
+      debug:
+        msg: Success!

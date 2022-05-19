@@ -1,0 +1,80 @@
+# Copyright 2021 Cloudera, Inc
+#
+# All rights reserved.
+#
+# The source code for this program is proprietary to Cloudera, Inc and, absent a
+# written agreement with Cloudera, Inc. to the contrary, is not published.
+#
+# Cloudera, Inc. maintains this source code as its trade secrets, irrespective of what has been or may be deposited with the U.S. Copyright Office.
+#
+# Cloudera Confidential
+
+### Mandatory ###
+
+## Authentication #
+## Ideally for toy deployment 12-16 chars, 1 Cap, 1 num, 1 special. This satisfies password requirements for *most* subsystems
+## You should set proper and unique passwords for serious deployments using documented overrides
+admin_password: admin
+
+
+### Optional ###
+## The following configurations will be applied globally
+
+## Name Prefix ##
+
+## This is a prefix applied to created Cloud resources e.g. myenv_ec2intancename
+## Ideally it should not exceed 6 chars, and must start with a letter, and be <= 4 chars for Azure.
+## Will default to the value in roles/cloudera_deploy/defaults/main.yml if not set
+#name_prefix: myenv
+
+## Tags ##
+
+## Tags are applied to deployed infrastructure, particularly chargeable infrastructure on cloud providers
+## You should use tags to identify your services to make it easy to track and remove them when no longer needed
+#tags:
+#  owner: kdavis@cloudera.com
+
+## Cloud Infrastructure ##
+
+## Specifies the Cloud Infrastructure provider, CDP presently supports GCP, AWS and Azure
+## Not necessary when using static Ansible inventory
+#infra_type: aws
+
+## Specify the default region you prefer for your infrastructure provider
+## It must be valid for the selected infra_type
+## The automation service attempts to validate that the requested build will work in the given region, so some may be rejected
+#infra_region: eu-west-1
+
+## SSH ##
+
+## Public Key file if using Azure or GCP as Cloud Infrastructure, or deploying Private Cloud
+## Should be in your local profile or the Definition Path
+## If not supplied one will be generated in the Definition path, along with a matching Private Key file ignoring the private_key_file setting below
+public_key_file: '~/.ssh/root_key'
+
+## Private key file
+## Required if deploying Dynamic Inventory to set the Ansible Connection Parameters
+## Should be in your local profile or the Definition Path
+## Must be set if public_key_file is set
+private_key_file: '~/.ssh/root_key'
+
+## Key Name if using AWS as Cloud Infrastructure
+## Defaults to the Namespace if not set
+## Must be set if public_key_file is set
+public_key_id: field
+
+## Cloudera License ##
+
+## Path to your Cloudera License file
+## Required if deploying a CDP Cluster for Private Cloud in a mode other than Trial
+## Should be in your local profile or the definition directory
+## A cluster with a Trial license will be deployed if this is not specified
+#license_file: "license.txt"
+
+## Cloud Credentials ##
+
+## Path to Google Cloud Credentials, if using Google Cloud
+## Should be in your local profile
+## We recommend they should not be located anywhere near a version controlled directory like git to avoid accidental inclusion!
+## If using Azure or AWS the credentials will be automatically collected from your local user profile
+#gcloud_credential_file: '~/.config/gcloud/mycreds.json'
