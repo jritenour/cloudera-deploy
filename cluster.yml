@@ -121,6 +121,10 @@
         permanent: true
       with_items:
         - 7180/tcp
+        - 7181/tcp
+        - 7182/tcp
+        - 7190/tcp
+        - 7191/tcp
         - 7183/tcp
         - 9866/tcp
         - 9865/tcp
